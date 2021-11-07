@@ -10,7 +10,7 @@ class Solution:
                 ans[1] = min_val + 1 if min_val < ans[1] else ans[1]
                 ans[2] = min_val + 1 if min_val < ans[2] else ans[2]
 
-
+        
             else:
                 ans[obstacles[i] - 1] = math.inf
                 min_dist = min(ans)
