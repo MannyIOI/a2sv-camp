@@ -1,22 +1,22 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        basket = {}
-        left = 0
+        res = 0
+        left, right = 0, 0
+        diction = {}
         
-        # Add fruit from the right index (right) of the window.
-        for right, fruit in enumerate(fruits):
-            basket[fruit] = basket.get(fruit, 0) + 1
+        while right < len(fruits):
+            if fruits[right] in diction or len(diction.keys()) < 2:
+                diction[fruits[right]] = diction.get(fruits[right], 0) + 1
+                right += 1
+                res = max(right - left, res)
+            else:
+                while len(diction.keys()) == 2:
+                    diction[fruits[left]] -= 1
+                    
+                    if diction[fruits[left]] == 0:
+                        del diction[fruits[left]]
 
-            # If the current window has more than 2 types of fruit,
-            # we remove one fruit from the left index (left) of the window.
-            if len(basket) > 2:
-                basket[fruits[left]] -= 1
-
-                # If the number of fruits[left] is 0, remove it from the basket.
-                if basket[fruits[left]] == 0:
-                    del basket[fruits[left]]
-                left += 1
+                    
+                    left += 1
         
-        # Once we finish the iteration, the indexes left and right 
-        # stands for the longest valid subarray we encountered.
-        return right - left + 1
+        return res
