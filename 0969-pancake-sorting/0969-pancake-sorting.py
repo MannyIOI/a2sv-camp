@@ -6,8 +6,7 @@ class Solution:
         ans = []
         while len(nums) > 0:
             idx = nums.index(max(nums))
-            ans.append(idx + 1)
-            ans.append(len(nums))
+            ans.extend([idx + 1, len(nums)])
             
             nums = nums[idx + 1:][::-1] + nums[0: idx]
         
