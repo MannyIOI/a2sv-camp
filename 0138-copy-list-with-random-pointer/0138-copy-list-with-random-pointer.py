@@ -10,7 +10,6 @@ import random
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         curr = head
-        index = 0
         randomIndexes = []
         elements = []
         
