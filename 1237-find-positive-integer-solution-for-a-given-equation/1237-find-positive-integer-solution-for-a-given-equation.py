@@ -12,8 +12,8 @@
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
         ans = set()
-        for i in range(1, 1001):
-            left, right = 1, 1000
+        for i in range(1, z + 1):
+            left, right = 1, z
             while left <= right:
                 mid = (left + right) // 2
                 if z > customfunction.f(i, mid):
