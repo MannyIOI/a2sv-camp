@@ -6,13 +6,10 @@ class Solution:
             mid = (left + right) // 2
             
             calcDays = self.calculateDays(weights, mid)
-            if calcDays < days:
+            if calcDays <= days:
                 right = mid - 1
-            elif calcDays > days:
-                left = mid + 1
             else:
-                ans = mid
-                right = mid - 1
+                left = mid + 1
         
         return left
     
